@@ -25,4 +25,3 @@ describe('getReleases', () => {
     expect(matchingRelease?.tag).toBe('v0.1.0')
   })
 })
-
