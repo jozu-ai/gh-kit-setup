@@ -33039,12 +33039,12 @@ const download_1 = __nccwpck_require__(699);
 const utils_1 = __nccwpck_require__(239);
 const hash_1 = __nccwpck_require__(1712);
 async function downloadAndInstall(release) {
-    ghCore.debug(`Downloading and installing release ${JSON.stringify(release)}`);
+    ghCore.debug(`Downloading and installing release ${release.tag}`);
     const files = release.assets
         .filter(filterAssetsByOS)
         .filter(filterAssetsByArch);
     if (files.length === 0) {
-        throw new Error('No matching release found for this OS and architecture');
+        throw new Error(`No matching release found for ${(0, utils_1.getOS)()} and ${(0, utils_1.getArch)()}`);
     }
     const file = files[0];
     const downloadPath = await (0, download_1.downloadFile)(file);
@@ -33096,7 +33096,7 @@ function filterAssetsByOS(file) {
     return lowerCaseFilename.includes(os);
 }
 function filterAssetsByArch(file) {
-    const arch = process.arch;
+    const arch = (0, utils_1.getArch)();
     const lowerCaseFilename = file.archiveFilename.toLowerCase();
     return lowerCaseFilename.includes(arch);
 }

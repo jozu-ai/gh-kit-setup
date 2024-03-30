@@ -5,16 +5,21 @@ import path from 'path'
 import * as fs from 'fs'
 import { KitArchiveFile, KitRelease } from '../types'
 import { downloadFile } from './download'
-import { getExecutableBinaryName, getOS, getTmpDir } from '../utils/utils'
+import {
+  getArch,
+  getExecutableBinaryName,
+  getOS,
+  getTmpDir
+} from '../utils/utils'
 import { verifyHash } from './hash'
 
 export async function downloadAndInstall(release: KitRelease): Promise<string> {
-  ghCore.debug(`Downloading and installing release ${JSON.stringify(release)}`)
+  ghCore.debug(`Downloading and installing release ${release.tag}`)
   const files = release.assets
     .filter(filterAssetsByOS)
     .filter(filterAssetsByArch)
   if (files.length === 0) {
-    throw new Error('No matching release found for this OS and architecture')
+    throw new Error(`No matching release found for ${getOS()} and ${getArch()}`)
   }
   const file = files[0]
   const downloadPath = await downloadFile(file)
@@ -74,7 +79,7 @@ function filterAssetsByOS(file: KitArchiveFile): boolean {
 }
 
 function filterAssetsByArch(file: KitArchiveFile): boolean {
-  const arch = process.arch
+  const arch = getArch()
   const lowerCaseFilename = file.archiveFilename.toLowerCase()
   return lowerCaseFilename.includes(arch)
 }
