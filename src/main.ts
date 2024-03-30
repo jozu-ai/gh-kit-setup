@@ -15,6 +15,7 @@ export async function run(): Promise<void> {
       core.getInput('token'),
       versionSpec === 'latest'
     )
+    core.debug(`Found ${releases.length} releases`)
     let releaseToDownload = undefined
 
     if (releases.length === 1) {
