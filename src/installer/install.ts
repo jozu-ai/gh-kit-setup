@@ -9,6 +9,7 @@ import { getExecutableBinaryName, getOS, getTmpDir } from '../utils/utils'
 import { verifyHash } from './hash'
 
 export async function downloadAndInstall(release: KitRelease): Promise<string> {
+  ghCore.debug(`Downloading and installing release ${JSON.stringify(release)}`)
   const files = release.assets
     .filter(filterAssetsByOS)
     .filter(filterAssetsByArch)

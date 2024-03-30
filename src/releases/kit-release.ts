@@ -41,7 +41,7 @@ export async function getReleases(
   } else {
     // Handle the case when the request was not successful
     core.warning(`Failed to retrieve releases. Status code: ${response.status}`)
-    return Promise.reject(new Error('Failed to retrieve releases'))
+    throw new Error('Failed to retrieve releases')
   }
 }
 

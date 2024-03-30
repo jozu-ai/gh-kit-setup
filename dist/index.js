@@ -33039,6 +33039,7 @@ const download_1 = __nccwpck_require__(699);
 const utils_1 = __nccwpck_require__(239);
 const hash_1 = __nccwpck_require__(1712);
 async function downloadAndInstall(release) {
+    ghCore.debug(`Downloading and installing release ${JSON.stringify(release)}`);
     const files = release.assets
         .filter(filterAssetsByOS)
         .filter(filterAssetsByArch);
@@ -33145,6 +33146,7 @@ async function run() {
     try {
         const versionSpec = core.getInput('version');
         const releases = await (0, kit_release_1.getReleases)(core.getInput('token'), versionSpec === 'latest');
+        core.debug(`Found ${releases.length} releases`);
         let releaseToDownload = undefined;
         if (releases.length === 1) {
             releaseToDownload = releases[0];
@@ -33238,7 +33240,7 @@ async function getReleases(token, latest) {
     else {
         // Handle the case when the request was not successful
         core.warning(`Failed to retrieve releases. Status code: ${response.status}`);
-        return Promise.reject(new Error('Failed to retrieve releases'));
+        throw new Error('Failed to retrieve releases');
     }
 }
 exports.getReleases = getReleases;
