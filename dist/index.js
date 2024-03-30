@@ -33336,7 +33336,7 @@ function getArch() {
         }
         ghCore.info(`Current architecture is ${currentArch}`);
     }
-    return process.arch;
+    return currentArch;
 }
 exports.getArch = getArch;
 function getExecutableBinaryName() {

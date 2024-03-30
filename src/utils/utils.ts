@@ -58,7 +58,7 @@ export function getArch(): string {
     }
     ghCore.info(`Current architecture is ${currentArch}`)
   }
-  return process.arch
+  return currentArch
 }
 
 export function getExecutableBinaryName(): string {
