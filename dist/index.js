@@ -32878,16 +32878,13 @@ const utils_1 = __nccwpck_require__(239);
  * @returns The path the file was downloaded to.
  */
 async function downloadFile(file) {
-    // tool-cache download downloads to /tmp/<guid> to prevent collisions.
-    // we mimic that behaviour here but keep the file's name so it has the correct extension
-    // a GUID is 128 bits = 16 bytes - this one has no hyphens but it serves the same purpose.
     const guid = crypto.randomBytes(16).toString('hex');
     const filename = `${guid}-${file.archiveFilename}`;
     const dlStartTime = Date.now();
     const downloadPath = await ghToolCache.downloadTool(file.archiveFileUrl, path.join((0, utils_1.getTmpDir)(), filename));
     ghCore.debug(`Downloaded to ${downloadPath}`);
     const elapsed = Date.now() - dlStartTime;
-    ghCore.info(`Downloaded ${file.archiveFilename} in ${(elapsed / 1000).toFixed(1)}s`);
+    ghCore.info(`📦 Downloaded ${file.archiveFilename} in ${(elapsed / 1000).toFixed(1)}s`);
     ghToolCache.isExplicitVersion;
     return downloadPath;
 }
@@ -32950,7 +32947,7 @@ async function verifyHash(downloadedArchivePath, file) {
             `did not match the hash downloaded from ${file.archiveFileUrl}.` +
             `\nExpected: "${correctHash?.hash}"\nReceived: "${actualHash}"`);
     }
-    ghCore.info(`sha256 verification of ${downloadedArchivePath} succeeded.`);
+    ghCore.info(`✅ sha256 verification of ${downloadedArchivePath} succeeded.`);
 }
 exports.verifyHash = verifyHash;
 /**
@@ -33312,7 +33309,7 @@ function getOS() {
             default:
                 currentOS = 'linux';
         }
-        ghCore.info(`Current operating system is ${currentOS}`);
+        ghCore.debug(`Current operating system is ${currentOS}`);
     }
     return currentOS;
 }
@@ -33334,7 +33331,7 @@ function getArch() {
             default:
                 currentArch = 'x86_64';
         }
-        ghCore.info(`Current architecture is ${currentArch}`);
+        ghCore.debug(`Current architecture is ${currentArch}`);
     }
     return currentArch;
 }

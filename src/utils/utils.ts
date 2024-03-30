@@ -31,7 +31,7 @@ export function getOS(): OS {
       default:
         currentOS = 'linux'
     }
-    ghCore.info(`Current operating system is ${currentOS}`)
+    ghCore.debug(`Current operating system is ${currentOS}`)
   }
   return currentOS
 }
@@ -56,7 +56,7 @@ export function getArch(): string {
       default:
         currentArch = 'x86_64'
     }
-    ghCore.info(`Current architecture is ${currentArch}`)
+    ghCore.debug(`Current architecture is ${currentArch}`)
   }
   return currentArch
 }

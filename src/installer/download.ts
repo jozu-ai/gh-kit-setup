@@ -10,9 +10,6 @@ import { getTmpDir } from '../utils/utils'
  * @returns The path the file was downloaded to.
  */
 export async function downloadFile(file: KitArchiveFile): Promise<string> {
-  // tool-cache download downloads to /tmp/<guid> to prevent collisions.
-  // we mimic that behaviour here but keep the file's name so it has the correct extension
-  // a GUID is 128 bits = 16 bytes - this one has no hyphens but it serves the same purpose.
   const guid = crypto.randomBytes(16).toString('hex')
   const filename = `${guid}-${file.archiveFilename}`
   const dlStartTime = Date.now()
@@ -23,7 +20,7 @@ export async function downloadFile(file: KitArchiveFile): Promise<string> {
   ghCore.debug(`Downloaded to ${downloadPath}`)
   const elapsed = Date.now() - dlStartTime
   ghCore.info(
-    `Downloaded ${file.archiveFilename} in ${(elapsed / 1000).toFixed(1)}s`
+    `📦 Downloaded ${file.archiveFilename} in ${(elapsed / 1000).toFixed(1)}s`
   )
   ghToolCache.isExplicitVersion
   return downloadPath

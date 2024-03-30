@@ -26,7 +26,7 @@ jobs:
 
       - name: Echo output of installer
         if: always()
-        run: echo "${{ steps.install_kit.outputs }}"
+        run: echo "${{ steps.install_kit.outputs.kit-path }}"
 
       - name: Run kit tools
         shell: bash
@@ -52,7 +52,7 @@ jobs:
 
       - name: Echo output of installer
         if: always()
-        run: echo "${{ steps.install_kit.outputs }}"
+        run: echo "${{ steps.install_kit.outputs.kit-path }}"
 
       - name: Run installed tools
         shell: bash

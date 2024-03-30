@@ -39,7 +39,7 @@ export async function verifyHash(
     )
   }
 
-  ghCore.info(`sha256 verification of ${downloadedArchivePath} succeeded.`)
+  ghCore.info(`✅ sha256 verification of ${downloadedArchivePath} succeeded.`)
 }
 
 /**
