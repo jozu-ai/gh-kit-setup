@@ -8,6 +8,7 @@
 
 import * as core from '@actions/core'
 import * as main from '../src/main'
+import { getToken } from './test-utils'
 
 // Mock the action's main function
 const runMock = jest.spyOn(main, 'run')
@@ -26,7 +27,7 @@ describe('action', () => {
     getInputMock.mockImplementation(name => {
       switch (name) {
         case 'token':
-          return process.env['GITHUB_TOKEN'] || ''
+          return getToken()
         case 'version':
           return 'latest'
         default:
