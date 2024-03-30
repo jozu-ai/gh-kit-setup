@@ -1,5 +1,7 @@
 name: 'Setup Kit CLI'
-description: 'Setup the Kit CLI on your runner. The Kit CLI is a CLI tool for managing AI models.'
+description:
+  'Setup the Kit CLI on your runner. The Kit CLI is a CLI tool for managing AI
+  models.'
 author: 'kitops.ml'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
@@ -19,7 +21,8 @@ inputs:
       When running this action on github.com, the default value is sufficient.
       When running on GHES, you can pass a personal access token
       for github.com to avoid rate limiting.
-    default: ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    default:
+      ${{ github.server_url == 'https://github.com' && github.token || '' }}
 
 # Define your outputs here.
 outputs:

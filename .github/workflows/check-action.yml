@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
   schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+    - cron: '0 0 * * *' # every day at midnight
 
 jobs:
   latest-version:
@@ -12,16 +12,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ "macos-latest", "windows-latest", "ubuntu-20.04" ]
+        os: ['macos-latest', 'windows-latest', 'ubuntu-20.04']
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
 
       - uses: ./
-        id: install_kit 
+        id: install_kit
         with:
-           version: "latest"
+          version: 'latest'
 
       - name: Echo output of installer
         if: always()
@@ -32,14 +32,13 @@ jobs:
         run: |
           set -x
           kit version
-                              
 
   known-version:
     name: Known version
     strategy:
       fail-fast: false
       matrix:
-        os: [ "macos-latest", "windows-latest", "ubuntu-20.04" ]
+        os: ['macos-latest', 'windows-latest', 'ubuntu-20.04']
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -48,8 +47,7 @@ jobs:
       - uses: ./
         id: install_kit
         with:
-            version: "v0.1.0"
-
+          version: 'v0.1.0'
 
       - name: Echo output of installer
         if: always()

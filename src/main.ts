@@ -7,17 +7,19 @@ import { downloadAndInstall } from './installer/install'
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 export async function run(): Promise<void> {
-  core.info("ℹ️ Kit CLI will be installed")
+  core.info('ℹ️ Kit CLI will be installed')
 
   try {
     const versionSpec = core.getInput('version')
-    const releases = await getReleases(core.getInput('token'), versionSpec === 'latest')
-    let releaseToDownload = undefined;
+    const releases = await getReleases(
+      core.getInput('token'),
+      versionSpec === 'latest'
+    )
+    let releaseToDownload = undefined
 
     if (releases.length === 1) {
       releaseToDownload = releases[0]
-    }
-    else {
+    } else {
       releaseToDownload = findMatchingRelease(releases, versionSpec)
     }
     if (releaseToDownload === undefined) {
