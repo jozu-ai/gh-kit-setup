@@ -22,21 +22,21 @@ export async function getReleases(
 
     // Process the releases
     const kitReleases: KitRelease[] = []
-    releases.forEach((release: any) => {
-      const kitRelase = {
+    for (const release of releases) {
+      const kitRelease = {
         tag: release.tag_name,
         name: release.name,
         assets: Array<KitArchiveFile>()
       }
-      release.assets.forEach((asset: any) => {
+      for (const asset of release.assets) {
         const kitAsset = {
           archiveFilename: asset.name,
           archiveFileUrl: asset.browser_download_url
         }
-        kitRelase.assets.push(kitAsset)
-      })
-      kitReleases.push(kitRelase)
-    })
+        kitRelease.assets.push(kitAsset)
+      }
+      kitReleases.push(kitRelease)
+    }
     return kitReleases
   } else {
     // Handle the case when the request was not successful

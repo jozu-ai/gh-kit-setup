@@ -86,7 +86,7 @@ async function getPublishedHash(
     if (parts.length === 2) {
       const hash = parts[0]
       const fileName = parts[1]
-      hashContents.push({ hash: hash, hashFileName: fileName })
+      hashContents.push({ hash, hashFileName: fileName })
     }
   }
   return hashContents
