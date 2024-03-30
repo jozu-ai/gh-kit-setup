@@ -1,23 +1,30 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Setup Kit CLI'
+description: 'Setup the Kit CLI on your runner. The Kit CLI is a CLI tool for managing AI models.'
+author: 'kitops.ml'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'terminal'
+  color: 'green'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
-    required: true
-    default: '1000'
+  version:
+    description: 'The version of Kit CLI to install. Defaults to `latest`.'
+    default: 'latest'
+    required: false
+  token:
+    description: |
+      Used to pull kit CLI releases. Since there's a default, this is typically not needed to be suplied.
+      When running this action on github.com, the default value is sufficient.
+      When running on GHES, you can pass a personal access token
+      for github.com to avoid rate limiting.
+    default: ${{ github.server_url == 'https://github.com' && github.token || '' }}
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  kit-path:
+    description: 'The path to the installed Kit CLI.'
 
 runs:
   using: node20
