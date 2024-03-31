@@ -27,7 +27,7 @@ export async function run(): Promise<void> {
       core.setFailed(`No release found for version ${versionSpec}`)
       return
     }
-    const execPath = downloadAndInstall(releaseToDownload)
+    const execPath = await downloadAndInstall(releaseToDownload)
     core.info(`🎉 Kit CLI installed to ${execPath}`)
     core.setOutput('kit-path', execPath)
   } catch (error) {
