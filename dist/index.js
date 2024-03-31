@@ -33155,7 +33155,9 @@ async function run() {
             core.setFailed(`No release found for version ${versionSpec}`);
             return;
         }
-        (0, install_1.downloadAndInstall)(releaseToDownload);
+        const execPath = (0, install_1.downloadAndInstall)(releaseToDownload);
+        core.info(`🎉 Kit CLI installed to ${execPath}`);
+        core.setOutput('kit-path', execPath);
     }
     catch (error) {
         // Handle any errors that occur during the request
