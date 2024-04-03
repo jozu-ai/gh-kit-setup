@@ -12,8 +12,8 @@ See [action.yml](action.yml)
   with:
     # The version of Kit CLI to install. Defaults to `latest`
     version: v0.1.1
-    # Used to pull kit CLI releases. Since there's a default, this is typically not 
-    # needed to be suplied.
+    # Used to pull kit CLI releases. Since there's a default, this is 
+    # typically not needed to be suplied.
     # When running this action on github.com, the default value is sufficient.
     # When running on GHES, you can pass a personal access token
     # for github.com to avoid rate limiting.
