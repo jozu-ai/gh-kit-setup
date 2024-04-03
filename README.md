@@ -8,7 +8,7 @@ CLI, and adding it to the PATH
 ## Simplify handoffs between data scientists, app devs, and DevOps.
 
 [![LICENSE](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://github.com/myscale/myscaledb/blob/main/LICENSE)
-[![Discord](https://img.shields.io/discord/1098133460310294528?logo=Discord)]((https://discord.gg/Tapeh8agYy)
+[![Discord](https://img.shields.io/discord/1098133460310294528?logo=Discord)](https://discord.gg/Tapeh8agYy)
 
 [![Official Website](<https://img.shields.io/badge/-Visit%20the%20Official%20Website%20%E2%86%92-rgb(255,175,82)?style=for-the-badge>)](https://kitops.ml/?utm_source=github&utm_medium=kitops-readme)
 
