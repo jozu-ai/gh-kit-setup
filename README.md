@@ -20,7 +20,7 @@ See [action.yml](action.yml)
     token: ''
 ```
 
-**Basic**
+#### Basic
 
 ```YAML
 steps:
@@ -34,7 +34,7 @@ steps:
       kit version
 ```
 
-**Pin a kit version**
+#### Pin a kit version
 
 ```YAML
 steps:
