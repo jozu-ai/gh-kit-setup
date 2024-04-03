@@ -1,7 +1,24 @@
+<img width="1270" alt="KitOps" src="https://github.com/jozu-ai/kitops/assets/10517533/41295471-fe49-4011-adf6-a215f29890c2">
+
+
 # Setup Kit CLI
 
 This action provides downloading and caching distribution of the requested Kit
 CLI, and adding it to the PATH
+## Simplify handoffs between data scientists, app devs, and DevOps.
+
+[![LICENSE](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://github.com/myscale/myscaledb/blob/main/LICENSE)
+[![Discord](https://img.shields.io/discord/1098133460310294528?logo=Discord)](https://discord.gg/3eDb4yAN)
+
+[![Official Website](<https://img.shields.io/badge/-Visit%20the%20Official%20Website%20%E2%86%92-rgb(255,175,82)?style=for-the-badge>)](https://kitops.ml/?utm_source=github&utm_medium=kitops-readme)
+
+### What is KitOps?
+
+KitOps is your toolkit for transforming how you package, share, and deploy AI/ML models. Say goodbye to compatibility concerns and hello to smooth AI/ML collaboration.
+
+KitOps simplifies the handoffs between data scientists, application developers, and SREs working on self-hosted AI/ML models (including LLMs). KitOps' ModelKits create a unified package for models, their dependencies, configurations, and environments. The ModelKit is portable and uses open standards for compatibility with the tools you already use.
+
+https://github.com/jozu-ai/kitops/assets/10517533/8f7539e1-b0d2-43c4-abfe-31841d4c68bd
 
 ## Usage
 
