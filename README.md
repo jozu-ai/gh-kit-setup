@@ -25,7 +25,7 @@ https://github.com/jozu-ai/kitops/assets/10517533/8f7539e1-b0d2-43c4-abfe-31841d
 See [action.yml](action.yml)
 
 ```YAML
-- uses: setup-kit@v1
+- uses: jozu-ai/gh-kit-setup@v1
   with:
     # The version of Kit CLI to install. Defaults to `latest`
     version: v0.1.1
@@ -42,7 +42,7 @@ See [action.yml](action.yml)
 
 ```YAML
 steps:
-  - uses: setup-kit@v1
+  - uses: jozu-ai/gh-kit-setup@v1
     id: install_kit
 
   - name: Run kit command
@@ -56,7 +56,7 @@ steps:
 
 ```YAML
 steps:
-  - uses: setup-kit@v1
+  - uses: jozu-ai/gh-kit-setup@v1
     id: install_kit
     with:
       version: v0.1.1
