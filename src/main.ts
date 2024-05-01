@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+import * as exec from '@actions/exec'
 import { findMatchingRelease, getReleases } from './releases/kit-release'
 import { downloadAndInstall } from './installer/install'
 
@@ -29,6 +30,8 @@ export async function run(): Promise<void> {
     }
     const execPath = await downloadAndInstall(releaseToDownload)
     core.info(`🎉 Kit CLI installed to ${execPath}`)
+    core.info('Version Info:')
+    exec.exec('kit version')
     core.setOutput('kit-path', execPath)
   } catch (error) {
     // Handle any errors that occur during the request
