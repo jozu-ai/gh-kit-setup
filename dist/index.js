@@ -33132,6 +33132,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
+const exec = __importStar(__nccwpck_require__(1514));
 const kit_release_1 = __nccwpck_require__(1987);
 const install_1 = __nccwpck_require__(6829);
 /**
@@ -33157,6 +33158,8 @@ async function run() {
         }
         const execPath = await (0, install_1.downloadAndInstall)(releaseToDownload);
         core.info(`🎉 Kit CLI installed to ${execPath}`);
+        core.info('Version Info:');
+        exec.exec('kit version');
         core.setOutput('kit-path', execPath);
     }
     catch (error) {
