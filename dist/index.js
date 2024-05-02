@@ -33078,14 +33078,38 @@ exports.getExecutableTargetDir = getExecutableTargetDir;
 async function extract(archive, dest) {
     const basename = path_1.default.basename(archive);
     const extname = path_1.default.extname(basename);
+    let extractedPath = '';
     if (extname === '.zip') {
-        return await ghToolCache.extractZip(archive, dest);
+        extractedPath = await ghToolCache.extractZip(archive, dest);
     }
     if (basename.endsWith('.tar.gz') || basename.endsWith('.tgz')) {
-        return await ghToolCache.extractTar(archive, dest);
+        extractedPath = await ghToolCache.extractTar(archive, dest);
     }
-    throw new Error(`No way to extract ${archive}:
-         Unknown file type "${basename}" - Supported formats are .zip and .tar.gz`);
+    ghCore.debug(`Extracted to ${extractedPath}`);
+    if (extractedPath === '') {
+        throw new Error(`Failed to extract ${archive}:
+           Unknown file type "${basename}" - Supported formats are .zip and .tar.gz`);
+    }
+    const extractedDir = path_1.default.dirname(extractedPath);
+    const files = fs.readdirSync(extractedDir, {
+        withFileTypes: true,
+        recursive: true
+    });
+    const kitExecutable = files.filter(file => file.isFile() && file.name === (0, utils_1.getExecutableBinaryName)());
+    if (kitExecutable.length === 0) {
+        throw new Error(`Failed to find executable binary in extracted archive: ${archive}`);
+    }
+    // In some cases, the extracted binary is in a subdirectory of the extracted archive
+    // In this case, move the binary to the root of the extracted archive
+    ghCore.debug(`Checking if extracted binary is in a subdirectory for ${kitExecutable[0].name} on path ${kitExecutable[0].path}`);
+    if (kitExecutable[0].path === extractedPath) {
+        return extractedPath;
+    }
+    else {
+        ghCore.debug(`Moving ${path_1.default.join(kitExecutable[0].path, kitExecutable[0].name)} to ${path_1.default.join(extractedPath, kitExecutable[0].name)}`);
+        fs.renameSync(path_1.default.join(kitExecutable[0].path, kitExecutable[0].name), path_1.default.join(extractedPath, kitExecutable[0].name));
+        return extractedPath;
+    }
 }
 function filterAssetsByOS(file) {
     const os = (0, utils_1.getOS)();

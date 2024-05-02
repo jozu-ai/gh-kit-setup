@@ -5,7 +5,7 @@
 This action provides downloading and caching distribution of the requested Kit
 CLI, and adding it to the PATH
 
-## Simplify handoffs between data scientists, app devs, and DevOps.
+## Simplify handoffs between data scientists, app devs, and DevOps
 
 [![LICENSE](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://github.com/myscale/myscaledb/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1098133460310294528?logo=Discord)](https://discord.gg/Tapeh8agYy)
@@ -23,8 +23,6 @@ and SREs working on self-hosted AI/ML models (including LLMs). KitOps' ModelKits
 create a unified package for models, their dependencies, configurations, and
 environments. The ModelKit is portable and uses open standards for compatibility
 with the tools you already use.
-
-https://github.com/jozu-ai/kitops/assets/10517533/8f7539e1-b0d2-43c4-abfe-31841d4c68bd
 
 ## Usage
 
@@ -44,7 +42,7 @@ See [action.yml](action.yml)
     token: ''
 ```
 
-#### Basic
+### Basic
 
 ```YAML
 steps:
@@ -58,7 +56,7 @@ steps:
       kit version
 ```
 
-#### Pin a kit version
+### Pin a kit version
 
 ```YAML
 steps:
@@ -92,7 +90,7 @@ detailed examples please refer to
 > version when you `cd` into the repository. Additionally, this `.node-version`
 > file is used by GitHub Actions in any `actions/setup-node` actions.
 
-1. Clone this reposutory
+1. Clone this repository
 
 1. :hammer_and_wrench: Install the dependencies
 
